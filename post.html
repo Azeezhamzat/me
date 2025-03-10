@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="developer" content="Azeez Hamzat">
+    <title>Azeez Adewale Hamzat | Blog Post</title>
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">Azeez Adewale Hamzat</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#visualizations">Insights</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" aria-label="Toggle navigation menu"><i class="fas fa-bars"></i></div>
+        </nav>
+    </header>
+
+    <!-- Blog Post Section -->
+    <main>
+        <div class="blog-post-wrapper">
+            <section class="blog-post-container">
+                <div class="blog-post-hero">
+                    <img src="images/networked-leaf.avif" alt="Blog Post Hero Image" class="blog-post-hero-image">
+                    <div class="blog-post-overlay"></div>
+                    <div class="blog-post-title">
+                        <h1>The Future of Sustainable Agriculture</h1>
+                        <p class="blog-post-date">March 07, 2025 | <a href="#">Azeez Hamzat</a></p>
+                    </div>
+                </div>
+                <div class="blog-post-content">
+                    <div class="blog-post-main">
+                        <img src="images/collective_genius_network.webp" alt="Collective Genius Network Diagram" class="blog-post-image">
+                        <article>
+                            <h2>Introduction to Sustainable Practices</h2>
+                            <p>Sustainable agriculture is more than a trend; it's a necessity for our planet's future. With climate change accelerating, innovative farming techniques are critical to ensure food security while preserving ecosystems.</p>
+                            <p>One key method is <em>agroecology</em>, which integrates ecological principles into farming. This approach reduces reliance on synthetic fertilizers and promotes biodiversity, leading to healthier soils and resilient crops.</p>
+                            <h3>Benefits of Agroecology</h3>
+                            <ul>
+                                <li>Improved soil health through natural composting.</li>
+                                <li>Reduced carbon footprint with minimal machinery use.</li>
+                                <li>Enhanced biodiversity supporting local wildlife.</li>
+                            </ul>
+                            <p>Imagine a world where every farm contributes to a greener planet. This vision is within reach if we adopt these practices widely.</p>
+                        </article>
+                    </div>
+                </div>
+                <div class="blog-comments">
+                    <h2>Comments</h2>
+                    <div class="comment-form">
+                        <form id="commentForm">
+                            <input type="text" id="commentName" placeholder="Your Name" required>
+                            <textarea id="commentText" placeholder="Write your comment..." required></textarea>
+                            <button type="submit" class="btn">Submit Comment</button>
+                        </form>
+                    </div>
+                    <div class="comments-list" id="commentsList">
+                        <!-- Comments will be dynamically inserted here -->
+                    </div>
+                </div>
+            </section>
+            <aside class="blog-sidebar">
+                <div class="sidebar-widget">
+                    <h3>Related Posts</h3>
+                    <ul class="related-posts">
+                        <li><a href="#">Renewable Energy Trends</a></li>
+                        <li><a href="#">Community-Driven Farming</a></li>
+                        <li><a href="#">Eco-Friendly Innovations</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-widget">
+                    <h3>Tags</h3>
+                    <div class="tags">
+                        <span class="tag">Agriculture</span>
+                        <span class="tag">Environment</span>
+                        <span class="tag">Sustainability</span>
+                    </div>
+                </div>
+                <div class="sidebar-widget">
+                    <h3>About the Author</h3>
+                    <p>Azeez Hamzat is a passionate advocate for sustainable living, with expertise in collective intelligence and environmental research.</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Azeez Adewale Hamzat | <span class="footer-highlight">Sprouting ideas for a better world</span></p>
+        <div class="social-links">
+            <a href="https://linkedin.com/in/azeezhamzat" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/Azeez_A_Hamzat" target="_blank" class="social-icon"><i class="fab fa-x"></i></a>
+            <a href="https://facebook.com/azeez.seeker" target="_blank" class="social-icon"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com/ibnhamzah1" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+        </div>
+        <a href="#blog-post-hero" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Comment functionality (temporary inline script; move to script.js for production)
+        document.addEventListener('DOMContentLoaded', () => {
+            const commentForm = document.getElementById('commentForm');
+            const commentsList = document.getElementById('commentsList');
+
+            let comments = JSON.parse(localStorage.getItem('comments')) || [];
+
+            function renderComments() {
+                commentsList.innerHTML = '';
+                comments.forEach((comment, index) => {
+                    const commentDiv = document.createElement('div');
+                    commentDiv.className = 'comment';
+                    commentDiv.innerHTML = `
+                        <p><strong>${comment.name}</strong> <span class="comment-date">${comment.date}</span></p>
+                        <p>${comment.text}</p>
+                        <button class="delete-btn" data-index="${index}"><i class="fas fa-trash"></i></button>
+                    `;
+                    commentsList.appendChild(commentDiv);
+                });
+                localStorage.setItem('comments', JSON.stringify(comments));
+            }
+
+            commentForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('commentName').value;
+                const text = document.getElementById('commentText').value;
+                const date = new Date().toLocaleString();
+
+                if (name && text) {
+                    comments.unshift({ name, text, date });
+                    renderComments();
+                    commentForm.reset();
+                }
+            });
+
+            commentsList.addEventListener('click', (e) => {
+                if (e.target.closest('.delete-btn')) {
+                    const index = e.target.closest('.delete-btn').dataset.index;
+                    comments.splice(index, 1);
+                    renderComments();
+                }
+            });
+
+            renderComments();
+        });
+    </script>
+</body>
+</html>
