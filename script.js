@@ -318,7 +318,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                     <h3>${post.title}</h3>
                     <p>${post.excerpt}</p>
-                    <a href="${post.link}" class="read-more">Read More</a>
+                    <button class="btn read-more-btn" onclick="window.location.href='${post.link}'">Read More</button>
                 `;
                 blogGrid.appendChild(article);
             });

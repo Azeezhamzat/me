@@ -1599,7 +1599,22 @@ footer p {
 
 @media (max-width: 768px) {
     .nav-links { display: none; }
-    .nav-links.active { display: flex; flex-direction: column; width: 100%; background: #1a3c34; position: absolute; top: 100%; left: 0; padding: 1.5rem 0; }
+    .nav-links.active { display: flex; flex-direction: column; width: 100%; background: #1a3c34; position: absolute; top: 100%; left: 0; padding: 0.5rem 0; }
+    .nav-links.active li {
+        padding: 0.8rem; /* Reduced from 1.2rem to 0.8rem */
+        text-align: center;
+    }
+    .nav-links.active a {
+        font-size: 1rem; /* Reduced from 1.1rem to 1rem */
+    }
+    .menu-toggle { display: block; }
+    header {
+        padding: 0.5rem 0; /* Reduced from 1rem 0 to 0.5rem 0 */
+    }
+    .logo a {
+        font-size: 1.3rem; /* Reduced from 2rem to 1.3rem for mobile */
+        line-height: 1.2; /* Adjusted to reduce vertical space */
+    }
     .menu-toggle { display: block; }
     .hero { height: 90vh; }
     .hero-content h1 { font-size: 2.8rem; }
