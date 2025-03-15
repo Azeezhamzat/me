@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa" rx="10" ry="10"/>
+  
+  <!-- Title -->
+  <text x="400" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#2c3e50">The Ecosystem of Collective Intelligence</text>
+  
+  <!-- Central Node -->
+  <circle cx="400" cy="300" r="80" fill="#3498db" opacity="0.9"/>
+  <text x="400" y="305" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">Breakthrough Innovation</text>
+  
+  <!-- Outer Rings -->
+  <circle cx="400" cy="300" r="160" stroke="#2980b9" stroke-width="3" fill="none" stroke-dasharray="5,5"/>
+  <circle cx="400" cy="300" r="240" stroke="#2980b9" stroke-width="2" fill="none" stroke-dasharray="3,3"/>
+  
+  <!-- Connecting Nodes - Inner Ring -->
+  <!-- Psychological Safety -->
+  <circle cx="400" cy="140" r="40" fill="#e74c3c" opacity="0.8"/>
+  <text x="400" y="145" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="white">Psychological Safety</text>
+  <line x1="400" y1="180" x2="400" y2="220" stroke="#2c3e50" stroke-width="2"/>
+  
+  <!-- Cognitive Diversity -->
+  <circle cx="560" cy="240" r="40" fill="#f39c12" opacity="0.8"/>
+  <text x="560" y="235" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="white">Cognitive</text>
+  <text x="560" y="250" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="white">Diversity</text>
+  <line x1="530" y1="260" x2="470" y2="280" stroke="#2c3e50" stroke-width="2"/>
+  
+  <!-- Knowledge Sharing -->
+  <circle cx="240" cy="240" r="40" fill="#27ae60" opacity="0.8"/>
+  <text x="240" y="235" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="white">Knowledge</text>
+  <text x="240" y="250" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="white">Sharing</text>
+  <line x1="270" y1="260" x2="330" y2="280" stroke="#2c3e50" stroke-width="2"/>
+  
+  <!-- Collaborative Process -->
+  <circle cx="400" cy="460" r="40" fill="#9b59b6" opacity="0.8"/>
+  <text x="400" y="455" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="white">Collaborative</text>
+  <text x="400" y="470" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="white">Process</text>
+  <line x1="400" y1="420" x2="400" y2="380" stroke="#2c3e50" stroke-width="2"/>
+  
+  <!-- Outer Ring Nodes -->
+  <!-- Previous Knowledge -->
+  <circle cx="220" cy="120" r="30" fill="#16a085" opacity="0.7"/>
+  <text x="220" y="125" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="white">Previous Knowledge</text>
+  <line x1="244" y1="138" x2="360" y2="140" stroke="#2c3e50" stroke-width="1" stroke-dasharray="4,2"/>
+  
+  <!-- Cross-Pollination -->
+  <circle cx="620" cy="140" r="30" fill="#16a085" opacity="0.7"/>
+  <text x="620" y="135" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="white">Cross-</text>
+  <text x="620" y="150" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="white">Pollination</text>
+  <line x1="595" y1="158" x2="440" y2="140" stroke="#2c3e50" stroke-width="1" stroke-dasharray="4,2"/>
+  
+  <!-- Institutional Support -->
+  <circle cx="150" cy="400" r="30" fill="#16a085" opacity="0.7"/>
+  <text x="150" y="395" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="white">Institutional</text>
+  <text x="150" y="410" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="white">Support</text>
+  <line x1="174" y1="382" x2="240" y2="280" stroke="#2c3e50" stroke-width="1" stroke-dasharray="4,2"/>
+  
+  <!-- Failure Tolerance -->
+  <circle cx="110" cy="220" r="30" fill="#16a085" opacity="0.7"/>
+  <text x="110" y="215" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="white">Failure</text>
+  <text x="110" y="230" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="white">Tolerance</text>
+  <line x1="135" y1="230" x2="200" y2="240" stroke="#2c3e50" stroke-width="1" stroke-dasharray="4,2"/>
+  
+  <!-- Diverse Perspectives -->
+  <circle cx="680" cy="320" r="30" fill="#16a085" opacity="0.7"/>
+  <text x="680" y="315" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="white">Diverse</text>
+  <text x="680" y="330" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="white">Perspectives</text>
+  <line x1="655" y1="305" x2="560" y2="280" stroke="#2c3e50" stroke-width="1" stroke-dasharray="4,2"/>
+  
+  <!-- Frequent Interactions -->
+  <circle cx="200" cy="520" r="30" fill="#16a085" opacity="0.7"/>
+  <text x="200" y="515" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="white">Frequent</text>
+  <text x="200" y="530" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="white">Interactions</text>
+  <line x1="224" y1="500" x2="370" y2="460" stroke="#2c3e50" stroke-width="1" stroke-dasharray="4,2"/>
+  
+  <!-- Resource Access -->
+  <circle cx="600" cy="520" r="30" fill="#16a085" opacity="0.7"/>
+  <text x="600" y="515" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="white">Resource</text>
+  <text x="600" y="530" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="white">Access</text>
+  <line x1="576" y1="500" x2="430" y2="460" stroke="#2c3e50" stroke-width="1" stroke-dasharray="4,2"/>
+  
+  <!-- External Inspiration -->
+  <circle cx="650" cy="400" r="30" fill="#16a085" opacity="0.7"/>
+  <text x="650" y="395" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="white">External</text>
+  <text x="650" y="410" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="white">Inspiration</text>
+  <line x1="626" y1="382" x2="560" y2="280" stroke="#2c3e50" stroke-width="1" stroke-dasharray="4,2"/>
+  
+  <!-- Legend -->
+  <rect x="50" y="50" width="180" height="120" fill="white" opacity="0.8" rx="5" ry="5" stroke="#2c3e50" stroke-width="1"/>
+  <text x="60" y="70" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2c3e50">Legend</text>
+  
+  <circle cx="70" cy="90" r="8" fill="#3498db"/>
+  <text x="85" y="94" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50">Innovation Center</text>
+  
+  <circle cx="70" cy="115" r="8" fill="#e74c3c"/>
+  <text x="85" y="119" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50">Core Enablers</text>
+  
+  <circle cx="70" cy="140" r="8" fill="#16a085"/>
+  <text x="85" y="144" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50">Supporting Elements</text>
+  
+  <line x1="70" y1="160" x2="200" y2="160" stroke="#2c3e50" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="85" y="165" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50">Implicit Connections</text>
+</svg>
