@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { title: "Ecology: Ecosystem Dynamics and Conservation (American Museum of Natural History, Oct 2024)", img: "images/Ecology- Ecosystem Dynamics and Conservation.jpg", category: ["ehs", "systems"], skills: "Conservation, Ecosystem Ecology, Environmental Management" },
         { title: "Entrepreneurship", img: "images/Entrepreneurship.jpg", category: ["leadership", "systems"], skills: "Entrepreneurship, Business Development, Innovation, Strategic Planning" },
         { title: "EMT Foundations (Coursera, Dec 2019)", img: "images/EMT FOUNDATIONS.jpg", category: ["ehs"], skills: "EHS, Emergency Medical Techniques, Patient Care" },
-        { title: "Energy Production, Distribution & Safety Specialization (Coursera, Dec 2019)", img: "images/Energy Production, Distribution & Safety.jpg", category: ["ehs", "systems"], skills: "EHS, Systems Thinking, Energy Management, Safety Protocols" },
+        { title: "Energy Production, Distribution & Safety Specialization (Coursera, Dec 2019)", img: "images/Energy Production, Distribution & Safety.jpg", category: ["specialization", "ehs", "systems"], skills: "EHS, Systems Thinking, Energy Management, Safety Protocols" },
         { title: "Food Safety and Risk Analysis (Coursera, Sep 2019)", img: "images/Food Safety＆Risk Analysis.jpg", category: ["ehs"], skills: "EHS, Food Safety, Risk Assessment" },
         { title: "Futures Thinking (Specialization) (Institute for the Future, Apr 2024)", img: "images/Futures Thinking.jpg", category: ["foresight", "specialization"], skills: "Scenario Planning, Foresight, Futures Thinking, Problem Solving, Strategic Forecasting, Risk Assessment, Leadership, Critical Thinking" },
         { title: "Global Environmental Management (Coursera, Mar 2019)", img: "images/Global Environmental Management.jpg", category: ["foresight", "ehs", "systems"], skills: "Foresight, EHS, Futures Thinking, Systems Thinking, Environmental Policy" },
@@ -241,6 +241,31 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => {
         updateCarousel();
     });
+
+    // Handle Contact Form Submission
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent default form submission
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Construct the mailto URL
+            const subject = encodeURIComponent(`Message from ${name}`);
+            const body = encodeURIComponent(
+                `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+            );
+            const mailtoLink = `mailto:azeezhamzat@yahoo.com?subject=${subject}&body=${body}`;
+
+            // Open the email client in a new tab
+            window.open(mailtoLink, '_blank');
+
+            // Optional: Reset form after submission (uncomment if desired)
+            contactForm.reset();
+        });
+    }
 });
 
 // Blog page
