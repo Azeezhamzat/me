@@ -166,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const itemsPerPage = window.innerWidth > 1024 ? 3 : window.innerWidth > 768 ? 2 : 1;
         const totalPages = Math.ceil(items.length / itemsPerPage);
 
+        
         // Circular page adjustment
         if (currentPage > totalPages) currentPage = 1;
         if (currentPage < 1) currentPage = totalPages;
@@ -227,84 +228,23 @@ document.addEventListener('DOMContentLoaded', function () {
     // Blog posts data
     const blogPosts = [
         {
-            "image": "images/collective_genius_network.webp",
+            "image": "images/collective-intelligence-diagram.svg",
             "date": "March 1, 2025",
-            "authorLink": "https://www.linkedin.com/in/azeezhamzat",
-            "title": "Forget the lone genius!",
-            "excerpt": "Learn how UM6P leverages AI to transform healthcare in Africa, addressing challenges and improving access during Science Week.",
-            "link": "post.html",
-            "tags": ["Health", "AI", "Innovation", "Africa"]
+            "title": "Forget the Lone Genius: Why Intelligence Is Always Collective",
+            "excerpt": "The smartest teams solve complex problems by harnessing collective intelligence, fostering diversity, creating safe spaces for ideas, balancing structure with freedom, and translating ideas into actionable outcomes—far surpassing the outdated myth of the lone genius.",
+            "link": "forget_the_lone_genius.html",
+            "tags": ["EvidenceBasedManagement","Research","Diversity", "Knowledge", "Innovation", "Collaboration"]
         },
         {
-            "image": "images/leaf.gif",
+            "image": "images/bias-ecosystem.png",
             "date": "February 27, 2025",
             "author": "Azeez Hamzat",
-            "authorLink": "https://www.linkedin.com/in/azeezhamzat",
-            "title": "Why Africa Must Do More on Energy Research",
+            "title": "The Invisible Hand in the Room: When Great Ideas Go Unheard ",
             "excerpt": "Learn why Africa must prioritize energy research to address access gaps and climate challenges, with insights on the €30M EU-AU fund boosting sustainable solutions.",
-            "link": "post.html",
-            "tags": ["Energy", "Research", "Sustainability", "Climate Change"]
+            "link": "The_Invisible_Hand_in_the_Room.html",
+            "tags": ["EvidenceBasedManagement","Research","Diversity", "Knowledge", "Innovation", "Collaboration"]
         },
-        {
-            "image": "images/networked-leaf.avif",
-            "date": "February 28, 2025",
-            "author": "Azeez Hamzat",
-            "authorLink": "https://www.linkedin.com/in/azeezhamzat",
-            "title": "NextAfrica: Bridging Europe and Africa Through Innovation at Station F",
-            "excerpt": "Learn how UM6P’s NextAfrica program at Station F accelerates Greentech, Agritech, and Healthtech startups, connecting Europe and Africa for sustainable innovation.",
-            "link": "post.html",
-            "tags": ["Innovation", "Entrepreneurship", "Environment", "Agriculture", "Health"]
-        },
-        {
-            "image": "images/tree.png",
-            "date": "December 15, 2024",
-            "author": "Azeez Hamzat",
-            "authorLink": "https://www.linkedin.com/in/azeezhamzat",
-            "title": "Unleashing Africa’s Entrepreneurial Spirit: How UM6P is Shaping the Future Through Innovation",
-            "excerpt": "Discover how UM6P is empowering Africa’s youth to tackle challenges through entrepreneurship and innovation.",
-            "link": "Unleashing-Entrepreneurship.html",
-            "tags": ["Entrepreneurship", "Innovation", "Startups"]
-        },
-        {
-            "image": "images/diversity-um6p.jpg",
-            "date": "January 7, 2025",
-            "author": "Azeez Hamzat",
-            "authorLink": "https://www.linkedin.com/in/azeezhamzat",
-            "title": "Embracing Diversity: How UM6P is Building a Pan-African Community of Innovators",
-            "excerpt": "Discover how UM6P fosters a diverse, multicultural student body to drive innovation and collaboration across Africa.",
-            "link": "blog-post-diversity.html",
-            "tags": ["Diversity", "Education", "Community"]
-        },
-        {
-            "image": "images/For Africa.png",
-            "date": "January 10, 2025",
-            "author": "Azeez Hamzat",
-            "authorLink": "https://www.linkedin.com/in/azeezhamzat",
-            "title": "For Africa: UM6P’s Commitment to Industry, Research, and Business Innovation",
-            "excerpt": "Discover how UM6P drives excellence through AAIT, AIRESS, ABS, and the Center for African Studies, fostering innovation and African perspectives.",
-            "link": "For-Africa.html",
-            "tags": ["Industry", "Research", "Business", "African Studies"]
-        },
-        {
-            "image": "images/excellence-in-africa.jpg",
-            "date": "January 23, 2024",
-            "author": "Azeez Hamzat",
-            "authorLink": "https://www.linkedin.com/in/azeezhamzat",
-            "title": "Excellence in Africa: UM6P and EPFL’s Collaborative Push for Academic Innovation",
-            "excerpt": "Explore how UM6P and EPFL are advancing academic excellence in Africa through the Excellence in Africa initiative.",
-            "link": "excellence-in-africa.html",
-            "tags": ["Education", "Research", "Innovation"]
-        },
-        {
-            "image": "images/um6pv.png",
-            "date": "February 16, 2025",
-            "author": "Azeez Hamzat",
-            "authorLink": "https://www.linkedin.com/in/azeezhamzat",
-            "title": "UM6P Ventures: Investing in Africa’s Future Through Science and Innovation",
-            "excerpt": "Explore how UM6P Ventures supports Digital Transformation and Deeptech startups, driving innovation in Agriculture, GreenTech, and Healthtech across Africa.",
-            "link": "um6p-ventures.html",
-            "tags": ["Innovation", "Startups", "Deeptech", "Digital Transformation"]
-        }
+        
     ];
 
     // Pagination variables
@@ -396,4 +336,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initialize blog page
     renderPosts(blogPosts, currentPage);
+});
+
+// Back to top functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const backToTop = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+    
+    backToTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 });
