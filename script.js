@@ -25,14 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
         card.addEventListener('click', (e) => {
             const url = card.getAttribute('data-url');
             if (url) {
-                window.open(url, '_blank'); // Open in new tab
+                window.open(url, '_blank');
                 console.log(`Opened ${url}`);
             } else {
                 console.warn('No URL specified for this visualization card');
             }
         });
 
-        // Add Hover Effect for CI Visualization
         card.addEventListener('mouseover', () => {
             if (!card.querySelector('.ci-overlay')) {
                 const overlay = document.createElement('div');
@@ -59,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentPage = 1;
     let currentFilter = 'all';
+    let autoScrollInterval; // For automatic scrolling
 
     const certificates = [
         { title: "Futures Thinking (Specialization) (Institute for the Future, Apr 2024)", img: "images/Futures Thinking.jpg", category: ["foresight", "data"], skills: "Futures Thinking, Horizon Scanning, Strategy" },
@@ -145,11 +145,13 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('.current-page').textContent = 1;
             prevBtn.disabled = true;
             nextBtn.disabled = true;
+            clearInterval(autoScrollInterval); // Stop auto-scrolling if no items
             return;
         }
         filtered.forEach(cert => carousel.appendChild(createCertificateItem(cert)));
         currentPage = 1;
         updateCarousel();
+        startAutoScroll(); // Restart auto-scrolling after filtering
     }
 
     function updateCarousel() {
@@ -160,13 +162,13 @@ document.addEventListener('DOMContentLoaded', () => {
             prevBtn.disabled = true;
             nextBtn.disabled = true;
             carousel.style.transform = 'translateX(0)';
+            clearInterval(autoScrollInterval); // Stop auto-scrolling if no items
             return;
         }
 
         const itemsPerPage = window.innerWidth > 1024 ? 3 : window.innerWidth > 768 ? 2 : 1;
         const totalPages = Math.ceil(items.length / itemsPerPage);
 
-        
         // Circular page adjustment
         if (currentPage > totalPages) currentPage = 1;
         if (currentPage < 1) currentPage = totalPages;
@@ -183,9 +185,33 @@ document.addEventListener('DOMContentLoaded', () => {
         const translateX = -((currentPage - 1) * (itemWidth + gap) * itemsPerPage);
 
         carousel.style.transform = `translateX(${translateX}px)`;
-        prevBtn.disabled = currentPage === 1;
-        nextBtn.disabled = currentPage === totalPages;
+        prevBtn.disabled = false; // Always enable for infinite loop
+        nextBtn.disabled = false; // Always enable for infinite loop
     }
+
+    // Function to start automatic scrolling
+    function startAutoScroll() {
+        clearInterval(autoScrollInterval); // Clear any existing interval
+        autoScrollInterval = setInterval(() => {
+            const items = Array.from(carousel.children).filter(item => !item.classList.contains('error-message'));
+            const itemsPerPage = window.innerWidth > 1024 ? 3 : window.innerWidth > 768 ? 2 : 1;
+            const totalPages = Math.ceil(items.length / itemsPerPage);
+
+            currentPage++;
+            if (currentPage > totalPages) currentPage = 1; // Loop back to first page
+            updateCarousel();
+        }, 3000); // Scroll every 3 seconds
+    }
+
+    // Pause auto-scroll on hover
+    carouselWrapper.addEventListener('mouseenter', () => {
+        clearInterval(autoScrollInterval);
+    });
+
+    // Resume auto-scroll when mouse leaves
+    carouselWrapper.addEventListener('mouseleave', () => {
+        startAutoScroll();
+    });
 
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -196,20 +222,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     prevBtn.addEventListener('click', () => {
-        if (currentPage > 1) {
-            currentPage--;
-            updateCarousel();
-        }
+        const items = Array.from(carousel.children).filter(item => !item.classList.contains('error-message'));
+        const itemsPerPage = window.innerWidth > 1024 ? 3 : window.innerWidth > 768 ? 2 : 1;
+        const totalPages = Math.ceil(items.length / itemsPerPage);
+
+        currentPage--;
+        if (currentPage < 1) currentPage = totalPages; // Loop to last page
+        updateCarousel();
     });
 
     nextBtn.addEventListener('click', () => {
         const items = Array.from(carousel.children).filter(item => !item.classList.contains('error-message'));
         const itemsPerPage = window.innerWidth > 1024 ? 3 : window.innerWidth > 768 ? 2 : 1;
         const totalPages = Math.ceil(items.length / itemsPerPage);
-        if (currentPage < totalPages) {
-            currentPage++;
-            updateCarousel();
-        }
+
+        currentPage++;
+        if (currentPage > totalPages) currentPage = 1; // Loop to first page
+        updateCarousel();
     });
 
     // Initial load
@@ -220,8 +249,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCarousel();
     });
 });
-
-
 
 // Blog page
 document.addEventListener('DOMContentLoaded', function () {
@@ -244,7 +271,6 @@ document.addEventListener('DOMContentLoaded', function () {
             "link": "The_Invisible_Hand_in_the_Room.html",
             "tags": ["EvidenceBasedManagement","Research","Diversity", "Knowledge", "Innovation", "Collaboration"]
         },
-        
     ];
 
     // Pagination variables

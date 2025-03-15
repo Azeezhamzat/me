@@ -126,6 +126,7 @@ nav {
     to { transform: translateY(0); opacity: 1; }
 }
 
+
 .hero {
     height: 90vh;
     display: flex;
@@ -166,6 +167,14 @@ nav {
     font-weight: 600;
     text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
 }
+
+.btn {
+    display: inline-flex; /* Ensure flex is applied */
+    align-items: center; /* Vertical centering */
+    justify-content: center; /* Horizontal centering */
+    text-align: center; /* Fallback for non-flex browsers */
+}
+
 
 .btn-group {
     display: flex;
@@ -1592,7 +1601,7 @@ footer p {
     .nav-links { display: none; }
     .nav-links.active { display: flex; flex-direction: column; width: 100%; background: #1a3c34; position: absolute; top: 100%; left: 0; padding: 1.5rem 0; }
     .menu-toggle { display: block; }
-    .hero { height: 60vh; }
+    .hero { height: 90vh; }
     .hero-content h1 { font-size: 2.8rem; }
     .subtitle { font-size: 1.4rem; }
     .about-content { flex-direction: column; }
