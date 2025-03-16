@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', function () {
             "author": "Azeez Hamzat",
             "title": "The Invisible Hand in the Room: When Great Ideas Go Unheard ",
             "excerpt": "We all love to believe we're rational creatures making thoughtful decisions. The reality? Our brains are bias machines. Even organizations that proudly display diversity statistics in their annual reports fall victim to decision-making patterns that systematically amplify certain voices while muting others.",
-            "link": "The_Invisible_Hand_in_the_Room.html",
+            "link": "invisible-hand.html",
             "tags": ["EvidenceBasedManagement","Research","Diversity", "Knowledge", "Innovation", "Collaboration"]
         },
     ];

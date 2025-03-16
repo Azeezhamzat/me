@@ -1700,12 +1700,11 @@ em { /* Added from blog-specific */
 }
 
 .svg-container {
-    width: 80%;
-    max-width: 600px;
-    aspect-ratio: 1 / 1; /* Maintains a 1:1 aspect ratio */
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
   }
-  
   .svg-container svg {
     width: 100%;
-    height: 100%;
+    height: auto;
   }
