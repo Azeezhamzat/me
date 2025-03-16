@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function () {
             "date": "February 27, 2025",
             "author": "Azeez Hamzat",
             "title": "The Invisible Hand in the Room: When Great Ideas Go Unheard ",
-            "excerpt": "Learn why Africa must prioritize energy research to address access gaps and climate challenges, with insights on the €30M EU-AU fund boosting sustainable solutions.",
+            "excerpt": "We all love to believe we're rational creatures making thoughtful decisions. The reality? Our brains are bias machines. Even organizations that proudly display diversity statistics in their annual reports fall victim to decision-making patterns that systematically amplify certain voices while muting others.",
             "link": "The_Invisible_Hand_in_the_Room.html",
             "tags": ["EvidenceBasedManagement","Research","Diversity", "Knowledge", "Innovation", "Collaboration"]
         },
