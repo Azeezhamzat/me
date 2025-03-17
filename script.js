@@ -274,21 +274,58 @@ document.addEventListener('DOMContentLoaded', function () {
     const blogPosts = [
         {
             "image": "images/collective-intelligence-diagram.svg",
-            "date": "March 1, 2025",
-            "title": "Forget the Lone Genius: Why Intelligence Is Always Collective",
-            "excerpt": "The smartest teams solve complex problems by harnessing collective intelligence, fostering diversity, creating safe spaces for ideas, balancing structure with freedom, and translating ideas into actionable outcomes—far surpassing the outdated myth of the lone genius.",
+            "date": "January 05, 2025",
+            "author": "Azeez Hamzat",
+            "title": "Forget the Lone Genius: The Symphony of Collective Intelligence",
+            "excerpt": "Behind every moment of inspiration lies a constellation of minds. The narrative of solitary brilliance—the visionary working in isolation, conjuring innovations through individual insight alone—persists as a compelling story. Yet it fundamentally misrepresents how breakthroughs actually emerge.",
             "link": "forget_the_lone_genius.html",
-            "tags": ["EvidenceBasedManagement","Research","Diversity", "Knowledge", "Innovation", "Collaboration"]
+            "tags": ["Diversity", "Research", "Community", "Systems", "Innovation", "Collaboration"]
         },
         {
-            "image": "images/bias-ecosystem.png",
-            "date": "February 27, 2025",
+            "image": "images/bias-ecosystem.svg",
+            "date": "February 01, 2025",
             "author": "Azeez Hamzat",
-            "title": "The Invisible Hand in the Room: When Great Ideas Go Unheard ",
+            "title": "The Invisible Hand in the Room: When Great Ideas Go Unheard",
             "excerpt": "We all love to believe we're rational creatures making thoughtful decisions. The reality? Our brains are bias machines. Even organizations that proudly display diversity statistics in their annual reports fall victim to decision-making patterns that systematically amplify certain voices while muting others.",
             "link": "invisible-hand.html",
-            "tags": ["EvidenceBasedManagement","Research","Diversity", "Knowledge", "Innovation", "Collaboration"]
+            "tags": ["EvidenceBasedManagement", "GroupDynamics", "Diversity", "Research", "Systems", "OrganizationalChange"]
         },
+        {
+            "image": "images/the_mirror_effect.svg",
+            "date": "February 15, 2025",
+            "author": "Azeez Hamzat",
+            "title": "The Mirror Effect: How Identity and Affinity Biases Shape Who Gets Heard",
+            "excerpt": "While our previous article examined how social dominance biases affect whose voice carries weight in meetings, this exploration goes deeper—into the unconscious preferences that determine whose ideas we value before they even speak.",
+            "link": "mirror-effect.html",
+            "tags": ["Diversity", "EvidenceBasedManagement", "GroupDynamics", "Research", "OrganizationalChange", "Systems"]
+        },
+        // {
+        //     "image": "images/information-processing-biases.svg",
+        //     "date": "March 01, 2025",
+        //     "author": "Azeez Hamzat",
+        //     "title": "Mind Traps: How Information Processing Biases Distort Organizational Decisions",
+        //     "excerpt": "Human cognition relies on heuristics—mental shortcuts that help us navigate information complexity. These shortcuts served our ancestors well when making rapid fight-or-flight decisions. In modern organizational contexts, however, they systematically distort our judgment.",
+        //     "link": "mind-traps.html",
+        //     "tags": ["EvidenceBasedManagement", "Research", "Systems", "Futures", "GroupDynamics", "OrganizationalChange"]
+        // },
+        // {
+        //     "image": "images/communication-style-biases.svg",
+        //     "date": "March 15, 2025",
+        //     "author": "Azeez Hamzat",
+        //     "title": "Speaking to Be Heard: Overcoming Communication Style Biases in Decision Making",
+        //     "excerpt": "Even when people with diverse perspectives are physically present, communication style differences often determine whose ideas actually influence outcomes. This exploration focuses on a subtler dimension—how communication style preferences systematically advantage certain voices while diminishing others.",
+        //     "link": "speaking-to-be-heard.html",
+        //     "tags": ["Diversity", "Community", "GroupDynamics", "Research", "EvidenceBasedManagement", "OrganizationalChange"]
+        // },
+        // {
+        //     "image": "images/inclusive-decision-framework.svg",
+        //     "date": "April 5, 2025",
+        //     "author": "Azeez Hamzat",
+        //     "title": "Building Inclusive Decision Engines: A Comprehensive Implementation Framework",
+        //     "excerpt": "Biases don't operate in isolation—they form an interconnected system that systematically filters out diverse perspectives before they can influence outcomes. Even organizations with sincere inclusion commitments often struggle with ensuring that diversity of thought actually shapes decisions.",
+        //     "link": "inclusive-decision-engines.html",
+        //     "tags": ["OrganizationalChange", "Systems", "Futures", "GroupDynamics", "EvidenceBasedManagement", "Research"]
+        // },
     ];
 
     // Pagination variables
