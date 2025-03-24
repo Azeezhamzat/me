@@ -273,10 +273,19 @@ document.addEventListener('DOMContentLoaded', function () {
     // Blog posts data
     const blogPosts = [
         {
+            "image": "images/traveller-migrant.jpg",
+            "date": "Novemebr 09, 2024",
+            "author": "Azeez Hamzat",
+            "title": "Are You a Traveller or a Migrant?",
+            "excerpt": "Life unfolds in unexpected chapters. In our constantly shifting world, two distinct approaches emerge: the migrant and the traveller. One moves reactively, pushed by external pressures; the other moves by choice, guided by curiosity and intention.",
+            "link": "are_you_a_traveller.html",
+            "tags": ["Systems", "Futures", "Resilience", "ChangeManagement", "IntentionalLiving", "CollectiveIntelligence"]
+        },
+        {
             "image": "images/collective-intelligence-diagram.svg",
             "date": "January 05, 2025",
             "author": "Azeez Hamzat",
-            "title": "Forget the Lone Genius: The Symphony of Collective Intelligence",
+            "title": "Forget the Lone Genius",
             "excerpt": "Behind every moment of inspiration lies a constellation of minds. The narrative of solitary brilliance—the visionary working in isolation, conjuring innovations through individual insight alone—persists as a compelling story. Yet it fundamentally misrepresents how breakthroughs actually emerge.",
             "link": "forget_the_lone_genius.html",
             "tags": ["Diversity", "Research", "Community", "Systems", "Innovation", "Collaboration"]
@@ -285,7 +294,7 @@ document.addEventListener('DOMContentLoaded', function () {
             "image": "images/bias-ecosystem.svg",
             "date": "February 01, 2025",
             "author": "Azeez Hamzat",
-            "title": "The Invisible Hand in the Room: When Great Ideas Go Unheard",
+            "title": "The Invisible Hand in the Room:",
             "excerpt": "We all love to believe we're rational creatures making thoughtful decisions. The reality? Our brains are bias machines. Even organizations that proudly display diversity statistics in their annual reports fall victim to decision-making patterns that systematically amplify certain voices while muting others.",
             "link": "invisible-hand.html",
             "tags": ["EvidenceBasedManagement", "GroupDynamics", "Diversity", "Research", "Systems", "OrganizationalChange"]
@@ -294,10 +303,19 @@ document.addEventListener('DOMContentLoaded', function () {
             "image": "images/the_mirror_effect.svg",
             "date": "February 15, 2025",
             "author": "Azeez Hamzat",
-            "title": "The Mirror Effect: How Identity and Affinity Biases Shape Who Gets Heard",
+            "title": "The Mirror Effect",
             "excerpt": "While our previous article examined how social dominance biases affect whose voice carries weight in meetings, this exploration goes deeper—into the unconscious preferences that determine whose ideas we value before they even speak.",
             "link": "mirror-effect.html",
             "tags": ["Diversity", "EvidenceBasedManagement", "GroupDynamics", "Research", "OrganizationalChange", "Systems"]
+        },
+        {
+            "image": "images/dear_me.jpg",
+            "date": "March 23, 2025",
+            "author": "Azeez Hamzat",
+            "title": "Dear Me; عزيزي أنا",
+            "excerpt": "There's something profoundly intimate about writing a letter to yourself. The concept of having an honest conversation with yourself across time opens doorways to reflection that other forms of introspection rarely achieve.",
+            "link": "dear_me.html",
+            "tags": ["Futures", "PersonalGrowth", "Reflection", "Identity", "Journey", "CrossCultural", "Resilience"]
         },
         // {
         //     "image": "images/information-processing-biases.svg",
