@@ -1,4 +1,4 @@
-// Complete Enhanced JavaScript for Azeez's Website with Mobile Optimizations
+// Complete Enhanced JavaScript for Azeez's Website with Mobile Optimizations & Arrow Overlap Fix
 
 // Enhanced hero carousel functionality
 let currentHeroSlideIndex = 0;
@@ -50,6 +50,127 @@ function initReducedMotion() {
     isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
+// DYNAMIC ARROW POSITIONING TO PREVENT TEXT OVERLAP
+function adjustArrowPosition() {
+    const heroContent = document.querySelector('.hero-content');
+    const heroText = document.querySelector('.hero-text');
+    const prevArrow = document.querySelector('.hero-nav.prev');
+    const nextArrow = document.querySelector('.hero-nav.next');
+    
+    if (!heroContent || !heroText || !prevArrow || !nextArrow) return;
+    
+    const screenWidth = window.innerWidth;
+    const textWidth = heroText.offsetWidth;
+    const contentPadding = parseInt(getComputedStyle(heroContent).paddingLeft);
+    
+    // Calculate safe arrow position
+    const safeDistance = Math.max(15, (screenWidth - textWidth) / 4);
+    
+    if (screenWidth <= 768) {
+        // Adjust arrow position based on content width
+        prevArrow.style.left = Math.min(safeDistance, 25) + 'px';
+        nextArrow.style.right = Math.min(safeDistance, 25) + 'px';
+        
+        // Hide arrows if screen is too narrow
+        if (screenWidth <= 400 || textWidth > screenWidth * 0.8) {
+            prevArrow.style.display = 'none';
+            nextArrow.style.display = 'none';
+            
+            // Enhance dot navigation when arrows are hidden
+            enhanceDotNavigation();
+        } else {
+            prevArrow.style.display = 'flex';
+            nextArrow.style.display = 'flex';
+        }
+    } else {
+        // Reset to default positions on larger screens
+        prevArrow.style.left = '';
+        nextArrow.style.right = '';
+        prevArrow.style.display = 'flex';
+        nextArrow.style.display = 'flex';
+    }
+}
+
+function enhanceDotNavigation() {
+    const dots = document.querySelectorAll('.hero-dot');
+    dots.forEach(dot => {
+        dot.style.transform = 'scale(1.2)';
+        dot.style.minWidth = '55px';
+        dot.style.minHeight = '55px';
+        dot.style.background = 'rgba(255, 255, 255, 0.9)';
+        dot.style.border = '3px solid rgba(255, 255, 255, 0.7)';
+    });
+}
+
+// Smart arrow management based on slide content
+function manageArrowsForSlide(slideIndex) {
+    const slides = document.querySelectorAll('.hero-slide');
+    const currentSlide = slides[slideIndex];
+    const prevArrow = document.querySelector('.hero-nav.prev');
+    const nextArrow = document.querySelector('.hero-nav.next');
+    
+    if (!currentSlide || !prevArrow || !nextArrow) return;
+    
+    const slideText = currentSlide.querySelector('.hero-text h1');
+    const screenWidth = window.innerWidth;
+    
+    if (slideText && screenWidth <= 480) {
+        const textLength = slideText.textContent.length;
+        
+        // Reduce arrow visibility for slides with long titles on small screens
+        if (textLength > 25) {
+            prevArrow.style.opacity = '0.3';
+            nextArrow.style.opacity = '0.3';
+            prevArrow.style.pointerEvents = 'none';
+            nextArrow.style.pointerEvents = 'none';
+        } else {
+            prevArrow.style.opacity = '0.8';
+            nextArrow.style.opacity = '0.8';
+            prevArrow.style.pointerEvents = 'auto';
+            nextArrow.style.pointerEvents = 'auto';
+        }
+    }
+}
+
+// Enhanced touch area for better mobile interaction
+function createTouchAreas() {
+    const heroCarousel = document.querySelector('.hero-carousel');
+    if (!heroCarousel) return;
+    
+    // Remove existing touch areas to prevent duplicates
+    const existingTouchAreas = heroCarousel.querySelectorAll('.touch-area');
+    existingTouchAreas.forEach(area => area.remove());
+    
+    // Create invisible touch areas on sides for navigation
+    const leftTouchArea = document.createElement('div');
+    const rightTouchArea = document.createElement('div');
+    
+    leftTouchArea.className = 'touch-area';
+    rightTouchArea.className = 'touch-area';
+    
+    const touchAreaStyle = `
+        position: absolute;
+        top: 20%;
+        width: 60px;
+        height: 60%;
+        z-index: 5;
+        background: transparent;
+        cursor: pointer;
+    `;
+    
+    leftTouchArea.style.cssText = touchAreaStyle + 'left: 0;';
+    rightTouchArea.style.cssText = touchAreaStyle + 'right: 0;';
+    
+    leftTouchArea.addEventListener('click', () => changeHeroSlide(-1));
+    rightTouchArea.addEventListener('click', () => changeHeroSlide(1));
+    
+    // Only add touch areas if arrows are hidden
+    if (window.innerWidth <= 400) {
+        heroCarousel.appendChild(leftTouchArea);
+        heroCarousel.appendChild(rightTouchArea);
+    }
+}
+
 function changeHeroSlide(direction) {
     const slides = document.querySelectorAll('.hero-slide');
     const dots = document.querySelectorAll('.hero-dot');
@@ -87,6 +208,9 @@ function changeHeroSlide(direction) {
     
     // Announce slide change for screen readers
     announceSlideChange(currentHeroSlideIndex + 1);
+    
+    // Manage arrows for current slide
+    manageArrowsForSlide(currentHeroSlideIndex);
 }
 
 function currentHeroSlide(slideIndex) {
@@ -120,6 +244,9 @@ function currentHeroSlide(slideIndex) {
     
     // Announce slide change for screen readers
     announceSlideChange(slideIndex);
+    
+    // Manage arrows for current slide
+    manageArrowsForSlide(currentHeroSlideIndex);
 }
 
 function updateHeroProgress() {
@@ -338,6 +465,8 @@ function handleOrientationChange() {
     // Wait for the orientation change to complete
     setTimeout(() => {
         setViewportHeight();
+        adjustArrowPosition(); // Readjust arrows after orientation change
+        createTouchAreas(); // Recreate touch areas if needed
         updateCarousel(); // Update certificates carousel if it exists
         
         // Recalculate hero layout
@@ -348,7 +477,10 @@ function handleOrientationChange() {
             heroContent.offsetHeight; // Trigger reflow
             heroContent.style.display = '';
         }
-    }, 100);
+        
+        // Recheck arrow management for current slide
+        manageArrowsForSlide(currentHeroSlideIndex);
+    }, 200);
 }
 
 // Initialize all mobile enhancements
@@ -359,6 +491,8 @@ function initMobileEnhancements() {
     // Enhanced resize handler
     const debouncedResize = debounce(() => {
         setViewportHeight();
+        adjustArrowPosition();
+        createTouchAreas();
         if (typeof updateCarousel === 'function') {
             updateCarousel();
         }
@@ -389,6 +523,13 @@ function initMobileEnhancements() {
     if (heroCarousel && /iPad|iPhone|iPod/.test(navigator.userAgent)) {
         heroCarousel.style.overscrollBehavior = 'none';
     }
+    
+    // Initial arrow position adjustment
+    setTimeout(() => {
+        adjustArrowPosition();
+        createTouchAreas();
+        manageArrowsForSlide(0); // Initial slide management
+    }, 100);
 }
 
 // Stats animation
@@ -770,3 +911,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// Export functions to global scope for HTML onclick handlers
+window.changeHeroSlide = changeHeroSlide;
+window.currentHeroSlide = currentHeroSlide;
+window.toggleMobileMenu = toggleMobileMenu;
