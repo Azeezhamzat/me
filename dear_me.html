@@ -22,12 +22,15 @@
     <meta name="twitter:image" content="images/dear_me.jpg">
     <title>Dear Me; عزيزي أنا | Azeez Adewale Hamzat</title>
     <link rel="icon" href="images/favicon.png" type="image/png">
-    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-lightbox/2.14.3/simple-lightbox.min.css" integrity="sha512-3vOhFXEFRKDec0zTkqJ7FcN7F1PT3T5H8S5P0fL8L+CHbf4Q2jdLFulwnXFSzSZmQ9jZhaAirWpkQ8tTLgXuH8Q==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-lightbox/2.14.3/simple-lightbox.min.css" integrity="sha512-3vOhFXEFRKDec0zTkqJ7FcN7F1PT3T5H8S5P0fL8L+CHbf4Q2jdLFulwnXFSzSZmQ9jZhaIirWpkQ8tTLgXuH8Q==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Header -->
     <header>
         <nav>
@@ -41,12 +44,16 @@
                 <li><a href="blog.html" class="active">Blog</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
-            <div class="menu-toggle" aria-label="Toggle navigation menu"><i class="fas fa-bars"></i></div>
+            <button class="menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
         </nav>
     </header>
 
     <!-- Blog Post Section -->
-    <main>
+    <main id="main-content">
         <div class="blog-post-wrapper">
             <section class="blog-post-container">
                 <div class="blog-post-hero">
@@ -61,9 +68,8 @@
                     <div class="blog-post-main">
                         <figure class="svg-container" style="margin-bottom: 2em;">
                             <a href="https://www.amazon.com/%D8%B9%D8%B2%D9%8A%D8%B2%D9%8A-%D8%A3%D9%86%D8%A7-dear-%D8%B9%D9%84%D8%A7-%D8%AF%D9%8A%D9%88%D8%A8/dp/B0CSR63DVG" target="_blank">
-                                <img src="images/dear_me.jpg" alt="Dear Me" class="blog-post-image" style="height: 200px;">
+                                <img src="images/dear_me.jpg" alt="Dear Me book cover" class="blog-post-image" style="height: 200px;">
                             </a>
-                            <!-- <figcaption>The book cover; Dear me</figcaption> -->
                         </figure>
                         
                         <article>
@@ -228,8 +234,6 @@
                         <li><a href="are_you_a_traveller.html">Are you a traveller or a migrant?</a></li>
                         <li><a href="forget_the_lone_genius.html">Forget the Lone Genius</a></li>
                         <li><a href="invisible-hand.html">The Invisible Hand</a></li>
-                        <!-- <li><a href="#speaking_to_be_heard.html">Speaking to Be Heard</a></li> -->
-                        <!-- <li><a href="#Building_Inclusive_Decision_Engines.html">Building Inclusive Decision Engines</a></li> -->
                     </ul>
                 </div>
                 <div class="sidebar-widget">
@@ -243,11 +247,7 @@
                         <span class="tag">Resilience</span>
                     </div>
                 </div>
-                <div class="sidebar-widget">
-                    <h3>About the Author</h3>
-                    <p>Azeez Hamzat is an Outreach Officer at UM6P's Africa Initiative with expertise in Collective Intelligence. With a background in Crop and Environmental Protection, he bridges educational connections across Africa while exploring personal growth through cross-cultural experiences.</p>
-                </div>
-            </aside>
+                </aside>
         </div>
     </main>
 
@@ -256,76 +256,84 @@
         <p>© 2025 Azeez Adewale Hamzat | <span class="footer-highlight">Sprouting ideas for a better world</span></p>
         <div class="social-links">
             <a href="https://linkedin.com/in/azeezhamzat" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://x.com/Azeez_A_Hamzat" target="_blank" class="social-icon" aria-label="Twitter"><i class="fab fa-x"></i></a>
+            <a href="https://x.com/Azeez_A_Hamzat" target="_blank" class="social-icon" aria-label="Twitter/X"><i class="fab fa-x"></i></a>
             <a href="https://facebook.com/azeez.seeker" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
             <a href="https://instagram.com/ibnhamzah1" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
-        <a href="#" class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></a>
+        <a href="#main-content" class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></a>
     </footer>
 
     <script>
-        // Menu toggle functionality
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const navLinks = document.querySelector('.nav-links');
+        // Enhanced mobile menu functionality
+        function toggleMobileMenu() {
+            const navMenu = document.querySelector('.nav-links');
+            const menuBtn = document.querySelector('.menu-toggle');
             
-            menuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-            });
-            
-            // Close menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('nav')) {
-                    navLinks.classList.remove('active');
+            if (navMenu && menuBtn) {
+                const isExpanded = navMenu.classList.contains('active');
+                
+                navMenu.classList.toggle('active');
+                menuBtn.setAttribute('aria-expanded', !isExpanded);
+                
+                if (!isExpanded) {
+                    const firstMenuItem = navMenu.querySelector('a');
+                    if (firstMenuItem) {
+                        setTimeout(() => firstMenuItem.focus(), 100);
+                    }
                 }
-            });
-        });
-        
-        // Comment functionality (email-based)
+            }
+        }
+
+        // Enhanced initialization
         document.addEventListener('DOMContentLoaded', () => {
+            // Add loaded class for smooth appearance
+            document.body.classList.add('loaded');
+
+            // Enhanced comment functionality
             const commentForm = document.getElementById('commentForm');
             
-            commentForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const name = document.getElementById('commentName').value.trim();
-                const text = document.getElementById('commentText').value.trim();
-                
-                if (name && text) {
-                    // Create email subject with article title
-                    const subject = `Blog Comment: Dear Me; عزيزي أنا`;
+            if (commentForm) {
+                commentForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
                     
-                    // Format the email body with the comment information
-                    const body = `
-    Name: ${name}
-    
-    Comment:
-    ${text}
-    
-    ---
-    This comment was submitted from your blog article "Dear Me; عزيزي أنا"
-    Date: ${new Date().toLocaleString()}
-                    `.trim();
+                    const name = document.getElementById('commentName').value.trim();
+                    const text = document.getElementById('commentText').value.trim();
                     
-                    // Create mailto link with encoded parameters
-                    const mailtoLink = `mailto:azeezhamzat@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                    
-                    // Open email client in a new tab
-                    window.open(mailtoLink, '_blank');
-                    
-                    // Reset the form now that the email client is opening in a new tab
-                    commentForm.reset();
-                    
-                    // Show confirmation message
-                    alert("Your email client should open in a new tab. Please send the email to submit your comment.");
-                } else {
-                    alert("Please fill in both your name and comment before submitting.");
-                }
-            });
-        });
-        
-        // Back to top functionality
-        document.addEventListener('DOMContentLoaded', () => {
+                    if (name && text) {
+                        const subject = `Blog Comment: Dear Me; عزيزي أنا`;
+                        const body = `
+Name: ${name}
+
+Comment:
+${text}
+
+---
+This comment was submitted from your blog article "Dear Me; عزيزي أنا"
+Date: ${new Date().toLocaleString()}
+                        `.trim();
+                        
+                        const mailtoLink = `mailto:azeezhamzat@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                        window.open(mailtoLink, '_blank');
+                        commentForm.reset();
+                        
+                        // Enhanced user feedback
+                        const submitBtn = commentForm.querySelector('button[type="submit"]');
+                        const originalText = submitBtn.textContent;
+                        submitBtn.textContent = 'Email Opening...';
+                        submitBtn.disabled = true;
+                        
+                        setTimeout(() => {
+                            submitBtn.textContent = originalText;
+                            submitBtn.disabled = false;
+                        }, 3000);
+                        
+                    } else {
+                        alert("Please fill in both your name and comment before submitting.");
+                    }
+                });
+            }
+            
+            // Enhanced back to top functionality
             const backToTop = document.querySelector('.back-to-top');
             
             window.addEventListener('scroll', () => {
@@ -341,6 +349,45 @@
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
+                });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                const navMenu = document.querySelector('.nav-links');
+                const menuBtn = document.querySelector('.menu-toggle');
+                const nav = document.querySelector('nav');
+                
+                if (navMenu && menuBtn && !nav.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Enhanced keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const navMenu = document.querySelector('.nav-links');
+                    const menuBtn = document.querySelector('.menu-toggle');
+                    if (navMenu && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        menuBtn.setAttribute('aria-expanded', 'false');
+                        menuBtn.focus();
+                    }
+                }
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                 });
             });
         });

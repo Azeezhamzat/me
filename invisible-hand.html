@@ -224,11 +224,7 @@
                         <span class="tag">Inclusion</span>
                     </div>
                 </div>
-                <div class="sidebar-widget">
-                    <h3>About the Author</h3>
-                    <p>Azeez Hamzat is a passionate advocate for sustainable living, with expertise in collective intelligence and environmental research.</p>
-                </div>
-            </aside>
+                </aside>
         </div>
     </main>
 
@@ -245,68 +241,76 @@
     </footer>
 
     <script>
-        // Menu toggle functionality
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const navLinks = document.querySelector('.nav-links');
+        // Enhanced mobile menu functionality
+        function toggleMobileMenu() {
+            const navMenu = document.querySelector('.nav-links');
+            const menuBtn = document.querySelector('.menu-toggle');
             
-            menuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-            });
-            
-            // Close menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('nav')) {
-                    navLinks.classList.remove('active');
+            if (navMenu && menuBtn) {
+                const isExpanded = navMenu.classList.contains('active');
+                
+                navMenu.classList.toggle('active');
+                menuBtn.setAttribute('aria-expanded', !isExpanded);
+                
+                if (!isExpanded) {
+                    const firstMenuItem = navMenu.querySelector('a');
+                    if (firstMenuItem) {
+                        setTimeout(() => firstMenuItem.focus(), 100);
+                    }
                 }
-            });
-        });
-        
-        // Comment functionality (email-based)
+            }
+        }
+
+        // Enhanced initialization
         document.addEventListener('DOMContentLoaded', () => {
+            // Add loaded class for smooth appearance
+            document.body.classList.add('loaded');
+
+            // Enhanced comment functionality
             const commentForm = document.getElementById('commentForm');
             
-            commentForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const name = document.getElementById('commentName').value.trim();
-                const text = document.getElementById('commentText').value.trim();
-                
-                if (name && text) {
-                    // Create email subject with article title
-                    const subject = `Blog Comment: The Invisible Hand in the Room`;
+            if (commentForm) {
+                commentForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
                     
-                    // Format the email body with the comment information
-                    const body = `
-    Name: ${name}
-    
-    Comment:
-    ${text}
-    
-    ---
-    This comment was submitted from your blog article "The Invisible Hand in the Room"
-    Date: ${new Date().toLocaleString()}
-                    `.trim();
+                    const name = document.getElementById('commentName').value.trim();
+                    const text = document.getElementById('commentText').value.trim();
                     
-                    // Create mailto link with encoded parameters
-                    const mailtoLink = `mailto:azeezhamzat@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                    
-                    // Open email client in a new tab
-                    window.open(mailtoLink, '_blank');
-                    
-                    // Reset the form now that the email client is opening in a new tab
-                    commentForm.reset();
-                    
-                    // Show confirmation message
-                    alert("Your email client should open in a new tab. Please send the email to submit your comment.");
-                } else {
-                    alert("Please fill in both your name and comment before submitting.");
-                }
-            });
-        });
-        
-        // Back to top functionality
-        document.addEventListener('DOMContentLoaded', () => {
+                    if (name && text) {
+                        const subject = `Blog Comment: Dear Me; عزيزي أنا`;
+                        const body = `
+Name: ${name}
+
+Comment:
+${text}
+
+---
+This comment was submitted from your blog article "Dear Me; عزيزي أنا"
+Date: ${new Date().toLocaleString()}
+                        `.trim();
+                        
+                        const mailtoLink = `mailto:azeezhamzat@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                        window.open(mailtoLink, '_blank');
+                        commentForm.reset();
+                        
+                        // Enhanced user feedback
+                        const submitBtn = commentForm.querySelector('button[type="submit"]');
+                        const originalText = submitBtn.textContent;
+                        submitBtn.textContent = 'Email Opening...';
+                        submitBtn.disabled = true;
+                        
+                        setTimeout(() => {
+                            submitBtn.textContent = originalText;
+                            submitBtn.disabled = false;
+                        }, 3000);
+                        
+                    } else {
+                        alert("Please fill in both your name and comment before submitting.");
+                    }
+                });
+            }
+            
+            // Enhanced back to top functionality
             const backToTop = document.querySelector('.back-to-top');
             
             window.addEventListener('scroll', () => {
@@ -324,5 +328,46 @@
                     behavior: 'smooth'
                 });
             });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                const navMenu = document.querySelector('.nav-links');
+                const menuBtn = document.querySelector('.menu-toggle');
+                const nav = document.querySelector('nav');
+                
+                if (navMenu && menuBtn && !nav.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Enhanced keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const navMenu = document.querySelector('.nav-links');
+                    const menuBtn = document.querySelector('.menu-toggle');
+                    if (navMenu && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        menuBtn.setAttribute('aria-expanded', 'false');
+                        menuBtn.focus();
+                    }
+                }
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
         });
     </script>
+</body>
+</html>
