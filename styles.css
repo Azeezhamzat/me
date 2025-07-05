@@ -1419,186 +1419,432 @@
             }
 
             /* Responsive Styles */
-            @media (max-width: 1024px) {
-                .hero-content {
-                    gap: 2rem;
-                }
-                
-                .hero-image-container {
-                    max-width: 500px;
-                    height: 350px;
-                }
-                
-                .hero-content.content-focus,
-                .hero-content.visual-focus {
-                    grid-template-columns: 1fr;
-                    gap: 3rem;
-                }
+/* Enhanced Mobile Responsive Styles for Hero Section */
 
-                .carousel-item {
-                    flex: 0 0 calc((100% - 2.5rem) / 2);
-                }
+/* Improved mobile breakpoints with better scaling */
+@media (max-width: 1200px) {
+    .hero-text h1 {
+        font-size: 3.8rem;
+    }
+    
+    .hero-text p {
+        font-size: 1.3rem;
+    }
+    
+    .hero-image-container {
+        max-width: 450px;
+        height: 320px;
+    }
+}
 
-                .timeline::before {
-                    left: 10px;
-                }
+@media (max-width: 1024px) {
+    .hero-content {
+        gap: 2rem;
+        padding: 4rem 1.5rem 2rem;
+    }
+    
+    .hero-text h1 {
+        font-size: 3.2rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .hero-text p {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+    }
+    
+    .hero-image-container {
+        max-width: 400px;
+        height: 300px;
+    }
+    
+    .cta-button {
+        padding: 0.9rem 2.2rem;
+        font-size: 1rem;
+    }
+    
+    /* Better navigation sizing for tablets */
+    .hero-nav {
+        width: 55px;
+        height: 55px;
+        font-size: 1.4rem;
+    }
+    
+    .hero-dot {
+        width: 14px;
+        height: 14px;
+        min-width: 40px;
+        min-height: 40px;
+    }
+}
 
-                .timeline-item {
-                    left: 20px !important;
-                    width: 90%;
-                }
+@media (max-width: 768px) {
+    /* Improved hero layout for mobile */
+    .hero-carousel {
+        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
+        min-height: 600px; /* Ensure minimum height */
+    }
+    
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2.5rem;
+        padding: 3rem 1.5rem 2rem;
+        justify-items: center;
+        align-content: center;
+        min-height: calc(100vh - 80px);
+    }
+    
+    .hero-text {
+        order: 1;
+        max-width: 100%;
+    }
+    
+    .hero-text h1 {
+        font-size: 2.8rem;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-text p {
+        font-size: 1.2rem;
+        max-width: 100%;
+        margin-bottom: 2rem;
+        line-height: 1.5;
+    }
+    
+    .hero-visual {
+        order: 2;
+        width: 100%;
+        max-width: 350px;
+    }
+    
+    .hero-image-container {
+        max-width: 100%;
+        height: 250px;
+        margin: 0 auto;
+    }
+    
+    .hero-feature-content {
+        padding: 1.5rem;
+    }
+    
+    .hero-icon {
+        font-size: 3rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .hero-visual h4 {
+        font-size: 1.2rem;
+        margin-bottom: 0.4rem;
+    }
+    
+    .hero-visual p {
+        font-size: 0.9rem;
+        line-height: 1.3;
+    }
+    
+    /* Improved CTA buttons for mobile */
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .cta-button {
+        width: 100%;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        justify-content: center;
+        min-height: 48px; /* Better touch target */
+    }
+    
+    /* Enhanced navigation for mobile */
+    .hero-nav {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+        backdrop-filter: blur(20px);
+        background: rgba(255,255,255,0.2);
+    }
+    
+    .hero-nav.prev {
+        left: 15px;
+    }
+    
+    .hero-nav.next {
+        right: 15px;
+    }
+    
+    .hero-indicators {
+        bottom: 25px;
+        gap: 0.6rem;
+    }
+    
+    .hero-dot {
+        width: 10px;
+        height: 10px;
+        min-width: 48px; /* Better touch target */
+        min-height: 48px;
+        background: rgba(255,255,255,0.6);
+        border: 2px solid rgba(255,255,255,0.4);
+    }
+    
+    .hero-dot.active {
+        background: var(--accent-gold);
+        border-color: var(--accent-gold);
+    }
+}
 
-                .timeline-item::before {
-                    left: -18px !important;
-                }
-            }
+@media (max-width: 480px) {
+    /* Optimized for small mobile screens */
+    .page-container {
+        padding-top: 70px;
+    }
+    
+    .hero-carousel {
+        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
+        min-height: 550px;
+    }
+    
+    .hero-content {
+        padding: 2rem 1rem 1.5rem;
+        gap: 2rem;
+        min-height: calc(100vh - 70px);
+    }
+    
+    .hero-text h1 {
+        font-size: 2.2rem;
+        line-height: 1.1;
+        margin-bottom: 0.8rem;
+    }
+    
+    .hero-text p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.4;
+    }
+    
+    .hero-visual {
+        max-width: 300px;
+    }
+    
+    .hero-image-container {
+        height: 220px;
+        border-radius: 15px;
+    }
+    
+    .hero-image-container::before {
+        border-radius: 18px;
+    }
+    
+    .hero-feature-content {
+        padding: 1.2rem;
+    }
+    
+    .hero-icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .hero-visual h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .hero-visual p {
+        font-size: 0.85rem;
+    }
+    
+    .cta-buttons {
+        gap: 0.8rem;
+        max-width: 280px;
+    }
+    
+    .cta-button {
+        padding: 0.9rem 1.8rem;
+        font-size: 0.95rem;
+        border-radius: 25px;
+    }
+    
+    /* Smaller navigation for very small screens */
+    .hero-nav {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+    
+    .hero-nav.prev {
+        left: 10px;
+    }
+    
+    .hero-nav.next {
+        right: 10px;
+    }
+    
+    .hero-indicators {
+        bottom: 20px;
+        gap: 0.4rem;
+    }
+    
+    .hero-dot {
+        width: 8px;
+        height: 8px;
+        min-width: 44px;
+        min-height: 44px;
+    }
+}
 
-            @media (max-width: 768px) {
-                .nav-links {
-                    display: none;
-                    position: absolute;
-                    top: 100%;
-                    left: 0;
-                    right: 0;
-                    background: var(--dark-green);
-                    flex-direction: column;
-                    padding: 2rem 1rem;
-                    gap: 0.5rem;
-                    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-                }
-                
-                .nav-links.active {
-                    display: flex;
-                    animation: slideDown 0.3s ease;
-                }
-                
-                .menu-toggle {
-                    display: flex;
-                }
-                
-                .hero-content {
-                    grid-template-columns: 1fr;
-                    text-align: center;
-                    gap: 3rem;
-                    padding: 6rem 1rem 2rem;
-                }
-                
-                .hero-text h1 {
-                    font-size: 2.8rem;
-                    line-height: 1.2;
-                }
-                
-                .hero-text p {
-                    font-size: 1.2rem;
-                    max-width: 100%;
-                }
-                
-                .hero-image-container {
-                    max-width: 100%;
-                    height: 280px;
-                    margin: 0 auto;
-                }
-                
-                .cta-buttons {
-                    flex-direction: column;
-                    align-items: center;
-                }
-                
-                .hero-nav {
-                    width: 45px;
-                    height: 45px;
-                    font-size: 1.2rem;
-                }
-                
-                .hero-nav.prev {
-                    left: 10px;
-                }
-                
-                .hero-nav.next {
-                    right: 10px;
-                }
+@media (max-width: 360px) {
+    /* Extra small screens (older phones) */
+    .hero-text h1 {
+        font-size: 1.9rem;
+        line-height: 1.1;
+    }
+    
+    .hero-text p {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+    
+    .hero-content {
+        padding: 1.5rem 0.8rem 1rem;
+        gap: 1.5rem;
+    }
+    
+    .hero-image-container {
+        height: 200px;
+    }
+    
+    .hero-feature-content {
+        padding: 1rem;
+    }
+    
+    .hero-icon {
+        font-size: 2.2rem;
+    }
+    
+    .hero-visual h4 {
+        font-size: 1rem;
+    }
+    
+    .hero-visual p {
+        font-size: 0.8rem;
+    }
+    
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
 
-                .about-content {
-                    flex-direction: column;
-                }
+/* Landscape orientation improvements for mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero-carousel {
+        height: 100vh;
+        min-height: 100vh;
+    }
+    
+    .hero-content {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 2rem;
+        padding: 1.5rem;
+        text-align: left;
+    }
+    
+    .hero-text {
+        order: 1;
+    }
+    
+    .hero-visual {
+        order: 2;
+        max-width: 280px;
+    }
+    
+    .hero-text h1 {
+        font-size: 2.2rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .hero-text p {
+        font-size: 1rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .hero-image-container {
+        height: 200px;
+    }
+    
+    .cta-buttons {
+        flex-direction: row;
+        gap: 1rem;
+        max-width: none;
+    }
+    
+    .cta-button {
+        width: auto;
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .hero-indicators {
+        bottom: 15px;
+    }
+    
+    .hero-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+}
 
-                .research-interests ul {
-                    grid-template-columns: 1fr;
-                }
+/* Fix for iOS Safari viewport height issues */
+@supports (-webkit-touch-callout: none) {
+    .hero-carousel {
+        height: -webkit-fill-available;
+        min-height: -webkit-fill-available;
+    }
+}
 
-                .ci-projects-grid, .publications-grid {
-                    grid-template-columns: 1fr;
-                }
+/* Better text readability on mobile */
+@media (max-width: 768px) {
+    .hero-text .highlight {
+        /* Ensure gold highlight is readable on mobile */
+        text-shadow: 0 0 15px rgba(255, 193, 7, 0.8), 
+                     2px 2px 6px rgba(0, 0, 0, 0.9),
+                     -1px -1px 0 rgba(0, 0, 0, 0.5);
+    }
+    
+    .hero-text h1 {
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9),
+                     1px 1px 0 rgba(0, 0, 0, 0.8);
+    }
+    
+    .hero-text p {
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    }
+}
 
-                .carousel-item {
-                    flex: 0 0 100%;
-                }
-
-                .stats-container {
-                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                }
-            }
-
-            @media (max-width: 480px) {
-                .page-container {
-                    padding-top: 70px;
-                }
-                
-                .hero-carousel {
-                    height: 90vh;
-                    height: calc(var(--vh, 1vh) * 90);
-                }
-                
-                .hero-content {
-                    padding: 2rem 1rem;
-                }
-                
-                .hero-text h1 {
-                    font-size: 2.2rem;
-                    line-height: 1.2;
-                }
-                
-                .hero-text p {
-                    font-size: 1.1rem;
-                }
-                
-                .hero-image-container {
-                    height: 240px;
-                    border-radius: 15px;
-                }
-                
-                .hero-image-container::before {
-                    border-radius: 18px;
-                }
-                
-                .cta-button {
-                    padding: 0.8rem 2rem;
-                    font-size: 0.9rem;
-                }
-
-                .about, .ci-projects, .publications, .achievements, .certificates, .contact {
-                    padding: 3rem 1.5rem;
-                }
-
-                .about-image {
-                    width: 150px;
-                }
-
-                .section-title, h2 {
-                    font-size: 2rem;
-                }
-
-                .achievement-badge {
-                    width: 200px;
-                    padding: 1.5rem;
-                }
-
-                .stats-container {
-                    grid-template-columns: 1fr;
-                }
-            }
-
-            /* Focus styles for better accessibility */
+/* Enhanced touch interactions for mobile */
+@media (max-width: 768px) {
+    .hero-nav:active {
+        transform: translateY(-50%) scale(0.95);
+    }
+    
+    .hero-dot:active {
+        transform: scale(0.9);
+    }
+    
+    .cta-button:active {
+        transform: translateY(-1px);
+    }
+}            /* Focus styles for better accessibility */
             .nav-links a:focus-visible,
             .cta-button:focus-visible,
             .hero-nav:focus-visible,
