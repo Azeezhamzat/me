@@ -1055,6 +1055,243 @@
                     }
                 });
             });
+
+            // Enhanced Mobile Viewport and Hero JavaScript
+// Add this to your existing JavaScript or replace the viewport height section
+
+// Enhanced viewport height calculation for mobile browsers
+function setViewportHeight() {
+    // Get the viewport height and multiply by 1% to get a value for 1vh
+    const vh = window.innerHeight * 0.01;
+    // Set the value in the --vh custom property to the root of the document
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    
+    // Also handle iOS Safari's dynamic viewport
+    if (window.visualViewport) {
+        const visualVh = window.visualViewport.height * 0.01;
+        document.documentElement.style.setProperty('--visual-vh', `${visualVh}px`);
+    }
+}
+
+// Debounced resize handler for better performance
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Enhanced mobile detection
+function isMobileDevice() {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+}
+
+// Improved touch handling for hero carousel
+function initEnhancedTouchSupport() {
+    const heroCarousel = document.querySelector('.hero-carousel');
+    if (!heroCarousel) return;
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
+    let touchStartTime = 0;
+    let isDragging = false;
+
+    // Prevent default touch behaviors that interfere with carousel
+    heroCarousel.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+        touchStartTime = Date.now();
+        isDragging = false;
+        
+        // Stop autoplay when user starts touching
+        stopHeroAutoplay();
+    }, { passive: true });
+
+    heroCarousel.addEventListener('touchmove', function(e) {
+        // Detect if user is trying to scroll vertically vs horizontally
+        const currentX = e.changedTouches[0].screenX;
+        const currentY = e.changedTouches[0].screenY;
+        const deltaX = Math.abs(currentX - touchStartX);
+        const deltaY = Math.abs(currentY - touchStartY);
+        
+        // If horizontal movement is dominant, prevent vertical scrolling
+        if (deltaX > deltaY && deltaX > 10) {
+            e.preventDefault();
+            isDragging = true;
+        }
+    }, { passive: false });
+
+    heroCarousel.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        
+        const touchDuration = Date.now() - touchStartTime;
+        
+        // Only process swipe if it was quick and primarily horizontal
+        if (touchDuration < 500 && isDragging) {
+            handleEnhancedSwipe();
+        }
+        
+        // Restart autoplay after touch ends
+        setTimeout(() => {
+            resetHeroAutoplay();
+        }, 1000);
+    }, { passive: true });
+}
+
+function handleEnhancedSwipe() {
+    const swipeThreshold = 50;
+    const horizontalDistance = touchStartX - touchEndX;
+    const verticalDistance = Math.abs(touchStartY - touchEndY);
+    
+    // Only trigger swipe if horizontal movement is greater than vertical
+    if (Math.abs(horizontalDistance) > swipeThreshold && Math.abs(horizontalDistance) > verticalDistance) {
+        if (horizontalDistance > 0) {
+            // Swipe left - next slide
+            changeHeroSlide(1);
+        } else {
+            // Swipe right - previous slide
+            changeHeroSlide(-1);
+        }
+    }
+}
+
+// Enhanced keyboard navigation for mobile accessibility
+function initEnhancedKeyboardNavigation() {
+    document.addEventListener('keydown', (e) => {
+        if (!document.activeElement.closest('.hero-carousel')) return;
+        
+        switch(e.key) {
+            case 'ArrowLeft':
+                e.preventDefault();
+                changeHeroSlide(-1);
+                announceSlideChange(currentHeroSlideIndex + 1);
+                break;
+            case 'ArrowRight':
+                e.preventDefault();
+                changeHeroSlide(1);
+                announceSlideChange(currentHeroSlideIndex + 1);
+                break;
+            case 'Home':
+                e.preventDefault();
+                currentHeroSlide(1);
+                break;
+            case 'End':
+                e.preventDefault();
+                currentHeroSlide(totalHeroSlides);
+                break;
+            case 'Space':
+            case 'Enter':
+                if (e.target.classList.contains('hero-dot')) {
+                    e.preventDefault();
+                    const index = Array.from(document.querySelectorAll('.hero-dot')).indexOf(e.target) + 1;
+                    currentHeroSlide(index);
+                }
+                break;
+        }
+    });
+}
+
+// Performance optimization for mobile
+function optimizeForMobile() {
+    // Reduce animations on low-powered devices
+    if (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2) {
+        document.documentElement.style.setProperty('--animation-duration', '0.2s');
+    }
+    
+    // Optimize scroll performance
+    let ticking = false;
+    function updateScrollElements() {
+        // Your scroll-related updates here
+        ticking = false;
+    }
+    
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateScrollElements);
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', requestTick, { passive: true });
+}
+
+// Handle screen orientation changes
+function handleOrientationChange() {
+    // Wait for the orientation change to complete
+    setTimeout(() => {
+        setViewportHeight();
+        updateCarousel(); // Update certificates carousel if it exists
+        
+        // Recalculate hero layout
+        const heroContent = document.querySelector('.hero-content');
+        if (heroContent) {
+            // Force a reflow to ensure proper layout
+            heroContent.style.display = 'none';
+            heroContent.offsetHeight; // Trigger reflow
+            heroContent.style.display = '';
+        }
+    }, 100);
+}
+
+// Initialize all mobile enhancements
+function initMobileEnhancements() {
+    // Set initial viewport height
+    setViewportHeight();
+    
+    // Enhanced resize handler
+    const debouncedResize = debounce(() => {
+        setViewportHeight();
+        if (typeof updateCarousel === 'function') {
+            updateCarousel();
+        }
+    }, 150);
+    
+    // Event listeners
+    window.addEventListener('resize', debouncedResize, { passive: true });
+    window.addEventListener('orientationchange', handleOrientationChange, { passive: true });
+    
+    // Visual viewport API support for iOS Safari
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', debouncedResize, { passive: true });
+    }
+    
+    // Initialize touch support
+    initEnhancedTouchSupport();
+    
+    // Initialize enhanced keyboard navigation
+    initEnhancedKeyboardNavigation();
+    
+    // Optimize for mobile devices
+    if (isMobileDevice()) {
+        optimizeForMobile();
+    }
+    
+    // Fix iOS bounce scroll behavior for hero
+    const heroCarousel = document.querySelector('.hero-carousel');
+    if (heroCarousel && /iPad|iPhone|iPod/.test(navigator.userAgent)) {
+        heroCarousel.style.overscrollBehavior = 'none';
+    }
+}
+
+// Update your existing DOMContentLoaded event listener
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize mobile enhancements first
+    initMobileEnhancements();
+    
+    // Your existing initialization code...
+    initReducedMotion();
+    initAccessibility();
+    
+    // Rest of your existing code...
+});
         </script>
     </body>
 </html>
