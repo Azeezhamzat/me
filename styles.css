@@ -2102,7 +2102,7 @@ html {
 }
 
 .blog-post-title h1 {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 700;
     margin: 0 0 1rem 0;
     line-height: 1.2;
@@ -2438,7 +2438,7 @@ figcaption {
     }
 
     .blog-post-title h1 {
-        font-size: 2.5rem;
+        font-size: 2.0rem;
     }
 
     .blog-post-main {
@@ -2476,7 +2476,7 @@ figcaption {
     }
 
     .blog-post-title h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     .blog-post-date {
