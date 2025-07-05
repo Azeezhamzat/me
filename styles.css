@@ -2434,6 +2434,7 @@ figcaption {
     .blog-post-wrapper {
         padding: 1.5rem 1rem;
         gap: 1.5rem;
+        margin-top: 20%;
     }
 
     .blog-post-title h1 {
